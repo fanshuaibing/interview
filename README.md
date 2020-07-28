@@ -158,8 +158,6 @@ jsonp iframe proxy nginx 反向代理 websocket
 
 ### Promise
 
-​
-
 1. Promise 用法
 
    ```js
@@ -462,10 +460,55 @@ const Foo = () => import("./Foo.vue"); // 返回 Promise
 ### HTTP 缓存有哪几种？
 
 - `ETag` 是通过对比浏览器和服务器资源的特征值（如 MD5）来决定是否要发送文件内容，如果一样就只发送 304（not modified）
-
 - `Expires` 是设置过期时间（绝对时间），但是如果用户的本地时间错乱了，可能会有问题
-
 - `CacheControl`: max-age=3600 是设置过期时长（相对时间），跟本地时间无关。
+
+### HTTP 与 HTTPS
+
+![http https ](https://user-gold-cdn.xitu.io/2018/5/11/1634e5e73b781926?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+#### HTTP 缺点
+
+- 通信使用明文，可能被窃听
+- 不验证通信方的身份，可能遭遇伪装
+- 无法证明报文的完整性，有可能遭遇篡改
+
+#### HTTPS 概念
+
+HTTPS 是在 HTTP 上建立 SSL 加密层，并对传输数据进行加密，是 HTTP 协议的安全版。HTTPS 主要作用：
+
+- 对数据进行加密，并建立一个信息安全通道，来保证传输过程中的数据安全
+- 对网站服务器进行真实身份认证
+
+[HTTP 与 HTTPS 详解](https://juejin.im/post/5af557a3f265da0b9265a498#heading-30)
+
+### 前端跨域
+
+- jsonp
+
+> JSONP 的原理非常简单，为了克服跨域问题，利用没有跨域限制的 script 标签加载预设的 callback 将内容传递给 js。一般来说我们约定通过一个参数来告诉服务器 JSONP 返回时应该调用的回调函数名，然后拼接出对应的 js
+
+- CORS
+
+- Access Control Allow Origin
+
+- websocket 双向通信
+
+- postMessage
+
+### keepAlive
+
+HTTP 持久连接（HTTP persistent connection，也称作 HTTP keep-alive 或 HTTP connection reuse，翻译过来可以是保持连接或者连接复用）是使用同一个 TCP 连接来发送和接收多个 HTTP 请求 / 应答，而不是为每一个新的请求 / 应答打开新的连接的方式。
+
+[http keepAlive](https://juejin.im/post/5d92acae6fb9a04e143daa0c)
+
+### 三次握手与四次挥手
+
+[三次握手与四次挥手](https://juejin.im/post/5b29d2c4e51d4558b80b1d8c)
+
+### 常见的请求头与相应头
+
+[请求头与相应头](https://juejin.im/post/5b854ddef265da43635d9302)
 
 ### GET 和 POST 的区别
 
@@ -551,8 +594,10 @@ const Foo = () => import("./Foo.vue"); // 返回 Promise
 
 Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入攻击。攻击者通过在目标网站上注入恶意脚本，使之在用户的浏览器上运行。利用这些恶意脚本，攻击者可获取用户的敏感信息如 Cookie、SessionID 等，进而危害数据安全。
 
-```javascript
-<script>console.log(document.cookie)</script>
+```html
+<script>
+  console.log(document.cookie);
+</script>
 ```
 
 预防
@@ -561,3 +606,9 @@ Cross-Site Scripting（跨站脚本攻击）简称 XSS，是一种代码注入�
 
 - 如果你一样要用 innerHTML，字符过滤
 - 使用 CSP Content Security Policy
+
+## 算法与数据结构
+
+## 二叉树
+
+### 排序算法
