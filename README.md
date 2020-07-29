@@ -363,6 +363,14 @@ router 跳转不会刷新页面，静态跳转
 
 `methods` 方法 每次调用都会重新计算
 
+### 响应式原理
+
+[深入响应式原理](https://cn.vuejs.org/v2/guide/reactivity.html)
+
+### keep-alive 组件
+
+[keep-alive](https://cn.vuejs.org/v2/api/#keep-alive)
+
 ### 项目中有多个环境怎么处理
 
 使用 `.env` `.env.development` `.env.production`
@@ -443,6 +451,10 @@ const Foo = () => import("./Foo.vue"); // 返回 Promise
 [Vue 项目性能优化 — 实践指南 - 掘金](https://juejin.im/post/5d548b83f265da03ab42471d#heading-7)
 
 ## React
+
+### useEffect 与 useMemo 区别
+
+### useMemo 与 useCallback 区别
 
 ## HTTP
 
@@ -537,6 +549,10 @@ HTTP 持久连接（HTTP persistent connection，也称作 HTTP keep-alive 或 H
   2. Session 是基于 Cookie 实现的，具体做法就是把 SessionID 存在 Cookie 里
 
 ## 浏览器相关
+
+### 浏览器拿到响应之后如何渲染页面？
+
+
 
 ### url 输入到页面显示全过程
 
