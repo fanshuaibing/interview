@@ -7,11 +7,18 @@ Number String Bool Null undefined Object Symbol
 ### let var 区别
 
 - var 的作用域是当前声明的执行上下文，let 的作用域则是块
-- [`var`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/var)声明的变量只能是全局或者整个函数块的。 [`var`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/var) 和 `let` 的不同之处在于后者是在编译时才初始化
-
-- var 有变量提升，而 let 则没有
-
+- [`var`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/var)声明的变量只能是全局或者整个函数块的。 [`var`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/statements/var) 和 `let` 的不同之处在于后者是在编译时才初始化。
+- var 有变量提升，而 let 则没有。
 - var 可以重复定义，但是在一个 scope 内，重复定义也只是那一个变量，而重复定义`let` 变量则会引起 TypeError 错误
+
+```javascript
+console.log(a)  // undefined
+var a = 1
+console.log(b) //Cannot access 'b' before initialization
+let b = 2
+```
+
+
 
 ### 什么是闭包
 
@@ -138,7 +145,7 @@ const unique = function (data) {
     - 变量被声明了，但没有赋值时，就等于undefined。
     - 调用函数时，应该提供的参数没有提供，该参数等于undefined。
     - 对象没有赋值的属性，该属性的值为undefined。
-    - 函数没有返回值时，默认返回 un defined。
+    - 函数没有返回值时，默认返回 undefined。
 
 ### 图片懒加载
 
@@ -191,6 +198,16 @@ jsonp iframe proxy nginx 反向代理 websocket
    总之，谁第一个成功或失败，就认为是 race 的成功或失败。
 
 [Promise - MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+
+
+
+
+
+## ES6相关
+
+
+
+
 
 ## 手写系列
 
@@ -474,6 +491,10 @@ const Foo = () => import("./Foo.vue"); // 返回 Promise
 - `ETag` 是通过对比浏览器和服务器资源的特征值（如 MD5）来决定是否要发送文件内容，如果一样就只发送 304（not modified）
 - `Expires` 是设置过期时间（绝对时间），但是如果用户的本地时间错乱了，可能会有问题
 - `CacheControl`: max-age=3600 是设置过期时长（相对时间），跟本地时间无关。
+
+### HTTP 1.0  、HTTP 1.1 与  HTTP 2 的 区别
+
+
 
 ### HTTP 与 HTTPS
 
