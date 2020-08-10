@@ -12,13 +12,11 @@ Number String Bool Null undefined Object Symbol
 - var 可以重复定义，但是在一个 scope 内，重复定义也只是那一个变量，而重复定义`let` 变量则会引起 TypeError 错误
 
 ```javascript
-console.log(a)  // undefined
-var a = 1
-console.log(b) //Cannot access 'b' before initialization
-let b = 2
+console.log(a); // undefined
+var a = 1;
+console.log(b); //Cannot access 'b' before initialization
+let b = 2;
 ```
-
-
 
 ### 什么是闭包
 
@@ -61,6 +59,8 @@ fn3();
    var bar = foo() this ==== window/undefined
 
 详解: [JS 中的 this 到底是什么](https://juejin.im/post/5ca4889b6fb9a05e4b05bd17)
+
+### typeof vs instanceof
 
 ### 用正则实现 trim()
 
@@ -155,9 +155,48 @@ const unique = function (data) {
 
 ### EventLoop 事件循环 微任务宏任务
 
+microTask 微任务(马上): promise.then() 、process.nextTick() 、messageChannel 、mutationObersve
+
+macroTask 宏任务(一会)：setTimeout、setInterval、setTmmediate
+
+先执行同步任务，再执行微任务队列，然后宏任务队列
+
 ### 前端如何解决跨域问题
 
-jsonp iframe proxy nginx 反向代理 websocket
+#### jsonp iframe proxy nginx 反向代理 websocket
+
+#### jsonp 原理
+
+**jsonp 利用 script 标签可以不受限制的从其他域加载资源的能力，进行跨域通信。**
+
+1. 「请求方」创建 script，src 指向「相应方」，同时传一个查询参数 ?callbackName=yyy
+2. 「相应方」根据查询参数 callbackName，构造形如
+   1. yyy.call(undefined, '你要的数据')
+   2. yyy('你要的数据')
+      这样的响应
+3. 「请求方」接收到响应，就会执行 yyy.call(undefined, '你要的数据')
+   yyy 是在前端代码里写好的函数
+4. 那么「请求方」就可以得到他要的数据，以及得到想要的结果
+
+```javascript
+// 前端代码
+let script = document.createElement("script");
+let callbackFn = function (str) {
+  console.log(str + new Date());
+};
+script.src = "http://localhost:3000/?callback=callbackFn";
+document.body.appendChild(script);
+```
+
+```javascript
+// 后端接口
+router.get("/", async (ctx, next) => {
+  let name = ctx.request.querystring.split("=")[1];
+  console.log(name);
+  let value = "hello world!";
+  ctx.body = `${name}('${value}')`;
+});
+```
 
 ### 洋葱模型
 
@@ -199,15 +238,9 @@ jsonp iframe proxy nginx 反向代理 websocket
 
 [Promise - MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 
+## ES6 相关
 
-
-
-
-## ES6相关
-
-
-
-
+let const
 
 ## 手写系列
 
@@ -492,9 +525,7 @@ const Foo = () => import("./Foo.vue"); // 返回 Promise
 - `Expires` 是设置过期时间（绝对时间），但是如果用户的本地时间错乱了，可能会有问题
 - `CacheControl`: max-age=3600 是设置过期时长（相对时间），跟本地时间无关。
 
-### HTTP 1.0  、HTTP 1.1 与  HTTP 2 的 区别
-
-
+### HTTP 1.0 、HTTP 1.1 与 HTTP 2 的 区别
 
 ### HTTP 与 HTTPS
 
@@ -572,8 +603,6 @@ HTTP 持久连接（HTTP persistent connection，也称作 HTTP keep-alive 或 H
 ## 浏览器相关
 
 ### 浏览器拿到响应之后如何渲染页面？
-
-
 
 ### url 输入到页面显示全过程
 
